@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 import pageobject.wallethub.WallethubPage;
 import tests.facebook.FacebookTest;
 
+import java.io.IOException;
+
 /**
  * Created by smali on 10/18/2019.
  */
@@ -31,4 +33,8 @@ public class WallethubTest extends WallethubPage {
         wallethubPage.signInScreen(prop.getProperty("usernamewallethub"), prop.getProperty("password"));
     }
 
+    @Test
+    public void writeRevieAndSetScore() throws InterruptedException, IOException {
+        wallethubPage.writeRevieAndSetScore();
+    }
 }

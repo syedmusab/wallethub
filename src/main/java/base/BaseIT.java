@@ -1,5 +1,6 @@
 package base;
 
+import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,6 +13,7 @@ import utils.WebEventListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -66,5 +68,9 @@ public class BaseIT {
         driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
 
+    }
+
+    public String loadFile(String path) throws IOException {
+        return IOUtils.toString(BaseIT.class.getClassLoader().getResourceAsStream(path), Charset.forName("UTF-8"));
     }
 }

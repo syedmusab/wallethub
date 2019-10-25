@@ -6,6 +6,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
+
 /**
  * Created by smali
  */
@@ -52,7 +54,7 @@ public class WallethubPage extends BaseIT {
         loginBtn.click();
     }
 
-    public void writeRevieAndSetScore() throws InterruptedException {
+    public void writeRevieAndSetScore() throws InterruptedException, IOException {
 
         Thread.sleep(5000);
         driver.get(prop.getProperty("companyprofile"));
@@ -65,7 +67,8 @@ public class WallethubPage extends BaseIT {
         actions.moveToElement(starIcon).perform();
         dropdown.click();
         dropdownOptionHealthInsurance.click();
-        writeYourReview.sendKeys("");
+        String reviewText = loadFile("G:\\wallethub-assessment\\src\\main\\resources\\review.txt");
+        writeYourReview.sendKeys(reviewText);
         submitBtn.click();
 
 
